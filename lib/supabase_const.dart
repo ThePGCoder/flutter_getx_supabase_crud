@@ -1,0 +1,5 @@
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+final supabase = Supabase.instance.client;
+const String SUPABASE_URL = 'https://pvwkkmswuzjeqfewiboh.supabase.co';
+const String SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2d2trbXN3dXpqZXFmZXdpYm9oIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODIzNzI1MjksImV4cCI6MTk5Nzk0ODUyOX0.4Wy5XtFtAvwPlzWX4okaw8CCrLnRfangg3dfvssblQk';
