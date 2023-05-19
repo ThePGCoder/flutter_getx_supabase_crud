@@ -9,11 +9,4 @@ class Employee {
       required this.name,
       required this.role,
       this.imageUrl});
-
-  Employee.fromMap({
-    required Map<String, dynamic> map,
-  })  : id = map['id'],
-        name = map['name'],
-        role = map['role'],
-        imageUrl = map['image_url'];
 }

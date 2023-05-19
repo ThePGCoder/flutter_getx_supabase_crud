@@ -10,24 +10,21 @@ class EmployeeCard extends StatelessWidget {
   final homeController = Get.find<HomeController>();
 
   @override
-
   Widget build(BuildContext context) {
-
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8.0),
-          boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 3), // changes position of shadow
-          )
-          ]
-        ),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 3), // changes position of shadow
+              )
+            ]),
         child: ListTile(
           leading: employee.imageUrl != ""
               ? CircleAvatar(
@@ -43,12 +40,20 @@ class EmployeeCard extends StatelessWidget {
               Text(employee.role),
               Row(
                 children: [
-                  GestureDetector(onTap: () {
-                    editModal(employee);
-                  },child: Icon(Icons.edit_outlined, color: Colors.orange.shade300)),
-                  GestureDetector(onTap: (){
-                    homeController.deleteEmployee(employee.id);
-                    },child: Icon(Icons.delete_forever_outlined, color: Colors.red.shade300,))
+                  GestureDetector(
+                      onTap: () {
+                        editModal(employee);
+                      },
+                      child: Icon(Icons.edit_outlined,
+                          color: Colors.orange.shade300)),
+                  GestureDetector(
+                      onTap: () {
+                        homeController.deleteEmployee(employee.id);
+                      },
+                      child: Icon(
+                        Icons.delete_forever_outlined,
+                        color: Colors.red.shade300,
+                      ))
                 ],
               )
             ],

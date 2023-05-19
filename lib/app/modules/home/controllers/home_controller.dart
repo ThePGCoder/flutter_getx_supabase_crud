@@ -14,13 +14,17 @@ class HomeController extends GetxController {
   var imageUrlC = TextEditingController();
 
   Future<void> fetchAllEmployees() async {
-    employeeList.clear();
     try {
       final data = await supabase.from('employees').select('*');
-      for (var map in (data as List)) {
-        var employee = Employee.fromMap(map: map);
-        employeeList.add(employee);
+      employeeList.clear();
+      for (var employee in (data as List)) {
+        employeeList.add(Employee(
+            id: employee['id'],
+            name: employee['name'],
+            role: employee['role'],
+            imageUrl: employee['image_url']));
       }
+      update();
     } on PostgrestException catch (error) {
       messageWithError(error);
     } catch (_) {
@@ -30,9 +34,11 @@ class HomeController extends GetxController {
 
   Future<void> editEmployee(String id) async {
     try {
-      await supabase.from('employees').update(
-          {'name': nameC.text, 'role': roleC.text, 'image_url': imageUrlC.text}).match(
-          {'id': id});
+      await supabase.from('employees').update({
+        'name': nameC.text,
+        'role': roleC.text,
+        'image_url': imageUrlC.text
+      }).match({'id': id});
       await fetchAllEmployees();
       Get.back();
     } on PostgrestException catch (error) {
@@ -40,12 +46,16 @@ class HomeController extends GetxController {
     } catch (_) {
       unexpectedError();
     }
-}
+  }
 
   Future<void> addEmployee() async {
     try {
-      await supabase.from('employees').insert(
-          {'name': nameC.text, 'role': roleC.text, 'image_url': imageUrlC.text});
+      await supabase.from('employees').insert({
+        'name': nameC.text,
+        'role': roleC.text,
+        'image_url': imageUrlC.text
+      });
+      clearTextControllers();
       await fetchAllEmployees();
       Get.back();
     } on PostgrestException catch (error) {
@@ -77,11 +87,15 @@ class HomeController extends GetxController {
     );
   }
 
+  clearTextControllers() {
+    nameC.clear();
+    roleC.clear();
+    imageUrlC.clear();
+  }
+
   @override
   void onInit() {
     fetchAllEmployees();
-
-    print('hello');
     super.onInit();
   }
 

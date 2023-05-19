@@ -30,7 +30,8 @@ class HomeView extends GetView<HomeController> {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.account_circle_outlined, color: Colors.blue, size: 30),
+                Icon(Icons.account_circle_outlined,
+                    color: Colors.blue, size: 30),
                 Container(width: 5),
                 Text(
                   'Employees App',

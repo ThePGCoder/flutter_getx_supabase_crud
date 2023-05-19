@@ -13,23 +13,38 @@ void addNewModal() {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          CustomField(label: 'Name', icon: Icons.short_text, textController: homeController.nameC,),
-          CustomField(label: 'Role', icon: Icons.badge_outlined, textController: homeController.roleC),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextFormField(
-            controller: homeController.imageUrlC,
-            decoration: (const InputDecoration(
-                prefixIcon: Icon(Icons.panorama_outlined),
-                labelText: "Image Url",
-                border: OutlineInputBorder())),
+          CustomField(
+            label: 'Name',
+            icon: Icons.short_text,
+            textController: homeController.nameC,
           ),
-        ),
+          CustomField(
+              label: 'Role',
+              icon: Icons.badge_outlined,
+              textController: homeController.roleC),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextFormField(
+              controller: homeController.imageUrlC,
+              decoration: (const InputDecoration(
+                  prefixIcon: Icon(Icons.panorama_outlined),
+                  labelText: "Image Url",
+                  border: OutlineInputBorder())),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.fromLTRB(8, 24, 8, 8),
             child: SizedBox(
-              width: 300, height: 50,
-                child: ElevatedButton(onPressed: () {homeController.addEmployee();}, child: Text('Submit', style: TextStyle(fontSize: 16),))),
+                width: 300,
+                height: 50,
+                child: ElevatedButton(
+                    onPressed: () {
+                      homeController.addEmployee();
+                    },
+                    child: Text(
+                      'Submit',
+                      style: TextStyle(fontSize: 16),
+                    ))),
           )
         ],
       ),

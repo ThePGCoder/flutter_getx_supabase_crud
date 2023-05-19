@@ -16,4 +16,3 @@ void unexpectedError() {
       colorText: Colors.white,
       icon: Icon(Icons.cancel_sharp, color: Colors.white));
 }
-
